@@ -8,7 +8,7 @@ const Trailers = ({data}) => {
         <div className='flex flex-col py-5'>
             <div className='flex flex-row scrollbar-none max-lg:overflow-x-auto'>
                 {
-                    data.map(trailer => <Trailer key={trailer.id} data={trailer} />)
+                    data.slice(0, 4).map(trailer => <Trailer key={trailer.id} data={trailer} />)
                 }
             </div>
             <div className='w-full flex justify-center mt-10'>
