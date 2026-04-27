@@ -8,7 +8,7 @@ const textMaxLength = (text = "", max = 110) => {
 const customToast = (type, message) => {
     const options = {
         position: "top-center",
-        autoClose: 300000,
+        autoClose: 3000,
         hideProgressBar: true,
         closeOnClick: true,
         pauseOnHover: true,
