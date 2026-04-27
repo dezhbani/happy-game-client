@@ -40,9 +40,9 @@ const getTrailers = async () => {
         return null
     }
 }
-const getTrailerVideo = async () => {
+const getTrailerVideo = async id => {
     try {
-        const result = await axios.get('/trailerVideo')
+        const result = await axios.get(`/trailerVideo${id ? `/${id}` : ''}`)
         return result.data
     } catch (error) {
         return null
