@@ -68,7 +68,7 @@ const TrailerVideo = ({ data }) => {
                 <div className='text-white'>
                     <div className='p-4 md:p-9 border-b border-b-[#F0F3F61A]'>
                         <h1 className='text-2xl md:text-4xl font-semibold mb-3 md:mb-8'>{data.title}</h1>
-                        <p className='text-base md:text-xl md:mb-2 sm:line-clamp-3'>{data.description}</p>
+                        <p className='text-base md:text-xl md:mb-2 sm:line-clamp-3 min-h-[84px]'>{data.description}</p>
                     </div>
                     <div className='flex justify-between items-center px-4 md:px-9 py-5 font-bold text-lg'>
                         <div className='flex'>
