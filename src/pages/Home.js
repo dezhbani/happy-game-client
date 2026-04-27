@@ -24,6 +24,7 @@ const Home = () => {
         trailers: null,
         trailerVideo: null
     })
+    const [trailerID, setTrailerID] = useState()
     const [loading, setLoading] = useState(true)
     const setHomeData = (key, value) => setData(prevData => ({ ...prevData, [key]: value }))
     const getSlidersData = async () => {
@@ -43,8 +44,8 @@ const Home = () => {
         setHomeData("reviews", reviewsData)
     }
     const getTrailerVideoData = async () => {
-        const trailerVideoData = await getTrailerVideo()
-        setHomeData("trailerVideo", trailerVideoData[0])
+        const trailerVideoData = await getTrailerVideo(trailerID)
+        setHomeData("trailerVideo", Array.isArray(trailerVideoData) ? trailerVideoData[0] : trailerVideoData)
     }
     const getTrailersData = async () => {
         const trailersData = await getTrailers()
@@ -64,9 +65,11 @@ const Home = () => {
         getProductsData()
         getArticlesData()
         getReviewsData()
-        getTrailerVideoData()
         getTrailersData()
     }, [])
+    useEffect(() => {
+        getTrailerVideoData()
+    }, [trailerID])
 
     if (loading) return <Loading />
     return (
@@ -77,7 +80,7 @@ const Home = () => {
                     <Slider data={data.sliders} />
                     <Products data={data.products} />
                     <Articles data={data.articles} />
-                    <Reviews data={data.reviews} />
+                    <Reviews data={data.reviews} selectTrailer={setTrailerID} />
                     <TrailerVideo data={data.trailerVideo} />
                     <Trailers data={data.trailers} />
                 </div>
