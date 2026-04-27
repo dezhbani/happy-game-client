@@ -6,7 +6,7 @@ import PlayIcon from '../../assets/icons/Play.svg'
 import axios from 'axios';
 import Image from '../../modules/Image';
 
-const Review = ({ data }) => {
+const Review = ({ data, selectTrailer }) => {
     const baseUrl = axios.defaults.baseURL
     const [imageLoaded, setImageLoaded] = useState(false);
 
@@ -19,10 +19,8 @@ const Review = ({ data }) => {
                             <div className='absolute transition-all ease-in-out duration-500 bottom-10 group-hover:-translate-y-2/3 text-white flex flex-col items-center h-fit w-full z-50'>
                                 <h1 className='w-full flex justify-center h-fit font-bold text-[26px]'>{data.title}</h1>
                                 <p className='w-full flex justify-center h-fit text-xl my-5'>{data.name}</p>
-                                <button>
-                                    <Link to="#">
+                                <button onClick={() => selectTrailer(data.id)}>
                                         <img className='p-4 bg-white backdrop-blur bg-opacity-10 transition-colors ease-in-out duration-500 group-hover:bg-orange rounded-full group-hover:rounded-3xl' src={PlayIcon} alt='play-icon' />
-                                    </Link>
                                 </button>
                             </div>
                             <div className="absolute inset-0 rounded-[28px]  group-hover:backdrop-blur-sm h-full object-cover bg-gradient-to-t from-black via-transparent to-[rgba(0,0,0,0)]"></div>
