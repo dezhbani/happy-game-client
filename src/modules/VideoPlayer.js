@@ -1,4 +1,5 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
+import logo from '../assets/Logo.png'
 
 // Icons
 import PlayIcon from '../assets/icons/Play.svg'
@@ -11,6 +12,7 @@ import FullScreen from '../assets/icons/FullScreen.svg'
 const VideoPlayer = ({ video, posterImage }) => {
     const videoRef = useRef(null);
     const [isPlaying, setIsPlaying] = useState(false);
+    const [isFull, setIsFull] = useState(false);
     const [poster, setPoster] = useState(false);
     const [volume, setVolume] = useState(0.5);
     const [currentTime, setCurrentTime] = useState(0);
@@ -53,37 +55,50 @@ const VideoPlayer = ({ video, posterImage }) => {
             video.currentTime = newTime;
         }
     };
+    useEffect(() => {
+        const handleFullscreenChange = () => {
+            setIsFull(!!document.fullscreenElement);
+        };
+
+        document.addEventListener('fullscreenchange', handleFullscreenChange);
+        return () => document.removeEventListener('fullscreenchange', handleFullscreenChange);
+    }, []);
+    const playerWrapperRef = useRef(null);
+
+    // تابع تغییر وضعیت تمام صفحه
     const toggleFullScreen = () => {
-        const video = videoRef.current;
-        if (video) {
-            if (video.paused || video.ended) setIsPlaying(false);
-            else setIsPlaying(true);
-            setVolume(video.volume)
-        }
         if (!document.fullscreenElement) {
-            if (videoRef.current.requestFullscreen) {
-                videoRef.current.requestFullscreen();
-            } else if (videoRef.current.mozRequestFullScreen) {
-                videoRef.current.mozRequestFullScreen();
-            } else if (videoRef.current.webkitRequestFullscreen) {
-                videoRef.current.webkitRequestFullscreen();
-            } else if (videoRef.current.msRequestFullscreen) {
-                videoRef.current.msRequestFullscreen();
-            }
+            playerWrapperRef.current.requestFullscreen().catch(err => {
+                console.error(`Error attempting to enable full-screen mode: ${err.message}`);
+            });
+        } else {
+            document.exitFullscreen();
         }
     };
     return (
-        <div className="relative w-full h-fit lg:h-[500px] group mx-auto bg-gray-800 rounded-[32px] shadow-md overflow-hidden" onDoubleClick={togglePlay}>
+        <div
+            ref={playerWrapperRef}
+            className={[
+                'relative mx-auto bg-gray-800 shadow-md overflow-hidden group',
+                // اگر فول‌اسکرین بود: کاملاً صفحه را پر کند، اگر نه: ابعاد عادی
+                isFull
+                    ? 'fixed inset-0 z-[9999] rounded-none w-screen h-screen'
+                    : 'rounded-[32px] lg:h-[500px] h-fit w-full'
+            ].join(' ')}
+
+        >
             <video
                 ref={videoRef}
-                controlsList='nodownload noremoteplayback'
-                className={`w-full h-full ${poster ? " object-contain" : " object-cover"} bg-black`}
                 src={video}
                 poster={posterImage}
-                type="video/mp4"
+                className="w-full h-full object-contain bg-black"
+                controlsList='nodownload noremoteplayback'
+                // type="video/mp4"
                 onTimeUpdate={handleTimeUpdate}
-                onEnded={() => setIsPlaying(false)}>
+                onEnded={() => setIsPlaying(false)}
+                onClick={togglePlay}>
             </video>
+            <img src={logo} alt='logo' className='h-10 opacity-30 absolute top-5 right-5' />
             <button className={`absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10 bg-black backdrop-blur-2xl bg-opacity-30 rounded-2xl p-3 lm:p-5 md:p-8 ${isPlaying && 'invisible'} transition ease-in-out duration-300`} onClick={togglePlay}>
                 <img className='max-lm:h-6 fill-orange' alt="icon" src={OrangePlayIcon} />
             </button>
@@ -116,7 +131,7 @@ const VideoPlayer = ({ video, posterImage }) => {
                         onChange={handleProgressChange}
                         className="progress-bar ease-in-out absolute ml-0 w-full bg-white h-1.5 bg-opacity-0 z-50 flex-grow  appearance-none cursor-pointer" />
                     <span style={{ width: `${(currentTime * 100) / duration}%` }} className='absolute ml-0 flex-grow h-1.5 bg-white rounded-lg'>
-                        <img className='absolute ml-[100%] flex-grow min-w-[30px] w-[30px] object-contain -translate-x-1/2 -translate-y-1/4' alt="icon"  src={Logo} />
+                        <img className='absolute ml-[100%] flex-grow min-w-[30px] w-[30px] object-contain -translate-x-1/2 -translate-y-1/4' alt="icon" src={Logo} />
                     </span>
                 </div>
                 <button onClick={toggleFullScreen} className="bg-[#1B1D21] bg-opacity-70 text-white font-bold p-1.5 rounded">
