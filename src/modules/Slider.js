@@ -62,7 +62,7 @@ const Slider = ({ data }) => {
             <div className='mb-6 relative max-w-full mx-auto h-72 md:h-96 lg:h-[500px] overflow-hidden rounded-[40px]'>
                 <div className="absolute top-0 left-0 w-full h-full transition-all duration-500 ease-in-out" style={{ transform: `translateX(-${active * 100}%)` }}>
                     {images.map((slide, index) => (
-                        <div key={index} className="w-full h-full flex items-center justify-center absolute top-0 left-0" style={{ transform: `translateX(${index * 100}%)` }} >
+                        <div key={slide} className="w-full h-full flex items-center justify-center absolute top-0 left-0" style={{ transform: `translateX(${index * 100}%)` }} >
                             <Image onLoadComplete={() => setImageLoaded(true)} src={baseUrl + slide} alt={`slide ${index}`} className="h-full w-full object-cover" />
                         </div>
                     ))}
@@ -82,7 +82,7 @@ const Slider = ({ data }) => {
                     <div className="flex dir-ltr items-center">
                         {
                             images.slice(slider.start, slider.end).map((slide, index) => (
-                                <div key={index} className={`mx-2 ${active === slider.start + index ? 'bg-dark-gray shadow-[0px_4px_3px_rgba(27, 29, 33, 1)] p-1.5 rounded-lg' : ''}`}>
+                                <div key={slide} className={`mx-2 ${active === slider.start + index ? 'bg-dark-gray shadow-[0px_4px_3px_rgba(27, 29, 33, 1)] p-1.5 rounded-lg' : ''}`}>
                                     <Image className="h-14 w-24 rounded-lg" alt={`slide ${index}`} src={baseUrl + slide} />
                                 </div>
                             ))
