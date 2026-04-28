@@ -6,7 +6,7 @@ import axios from 'axios';
 
 // Icons
 import SaveIcon from '../../assets/icons/SaveIcon'
-import More from '../../assets/icons/More.svg'
+import MoreIcon from '../../assets/icons/MoreIcon'
 import LikeIcon from '../../assets/icons/LikeIcon';
 import ShareIcon from '../../assets/icons/ShareIcon';
 
@@ -63,9 +63,9 @@ const TrailerVideo = ({ data }) => {
     const baseUrl = axios.defaults.baseURL
     return (
         <div className='my-10' id='trailer'>
-            <div onFocus={() => console.log("focuse")} className='bg-dark-gray h-fit shadow-lg rou shadow-[#F0F3F61A] rounded-[32px]'>
+            <div className='bg-white darkAnimation dark:bg-dark-gray h-fit  shadow-soft rounded-[32px]'>
                 <VideoPlayer video={baseUrl + data.video} posterImage={baseUrl + data.poster} />
-                <div className='text-white'>
+                <div className='text-slate-700 darkAnimation dark:text-white'>
                     <div className='p-4 md:p-9 border-b border-b-[#F0F3F61A]'>
                         <h1 className='text-2xl md:text-4xl font-semibold mb-3 md:mb-8'>{data.title}</h1>
                         <p className='text-base md:text-xl md:mb-2 sm:line-clamp-3 min-h-[84px]'>{data.description}</p>
@@ -73,7 +73,7 @@ const TrailerVideo = ({ data }) => {
                     <div className='flex justify-between items-center px-4 md:px-9 py-5 font-bold text-lg'>
                         <div className='flex'>
                             <div onClick={addToSavedList} className='flex items-center mx-3 md:mx-6 my-2 md:my-5'>
-                                <SaveIcon className={` ${save ? "fill-white" : "fill-none"}`} />
+                                <SaveIcon className={` ${save ? "fill-slate-700 darkAnimation dark:fill-white" : "fill-none"}`} />
                                 <span className='mr-2 max-lg:hidden'>افزودن به لیست علاقه مندی ها</span>
                             </div>
                             <div onClick={shareContent} className='flex items-center mx-3 md:mx-6 my-2 md:my-5'>
@@ -81,13 +81,13 @@ const TrailerVideo = ({ data }) => {
                                 <span className='mr-2 max-lg:hidden'>اشتراک گذاری</span>
                             </div>
                             <div onClick={changeLikeStatus} className='flex items-center mx-3 md:mx-6 my-2 md:my-5'>
-                                <LikeIcon className={` ${like ? "fill-white" : "fill-none"}`} />
+                                <LikeIcon className={` ${like ? "fill-slate-700 darkAnimation dark:fill-white" : "fill-none"}`} />
                                 <span className='mr-2 max-lg:hidden'>پسندیدم</span>
                             </div>
                         </div>
                         <div>
-                            <button className='bg-[#E4E4E440] py-3.5 px-4 rounded-2xl'>
-                                <img src={More} alt='icon' />
+                            <button className='bg-[#e4e4e4] darkAnimation dark:bg-[#E4E4E440] text-slate-700 dark:text-white py-3.5 px-4 rounded-2xl'>
+                                <MoreIcon />
                             </button>
                         </div>
                     </div>

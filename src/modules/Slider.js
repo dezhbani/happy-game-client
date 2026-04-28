@@ -6,7 +6,7 @@ import Image from './Image';
 
 // Icons
 import ArrowRight from '../assets/icons/SmallRight.svg';
-import ArrowLeft from '../assets/icons/SmallLeft.svg';
+import ArrowLeft from '../assets/icons/SmallLeft';
 
 const Slider = ({ data }) => {
     const { images, card } = data
@@ -59,7 +59,7 @@ const Slider = ({ data }) => {
                 )
 
             }
-            <div className='mb-6 relative max-w-full mx-auto h-72 md:h-96 lg:h-[500px] overflow-hidden rounded-[40px]'>
+            <div className='mb-6 relative max-w-full mx-auto h-72 md:h-96 lg:h-[500px] overflow-hidden rounded-[40px] shadow-soft'>
                 <div className="absolute top-0 left-0 w-full h-full transition-all duration-500 ease-in-out" style={{ transform: `translateX(-${active * 100}%)` }}>
                     {images.map((slide, index) => (
                         <div key={slide} className="w-full h-full flex items-center justify-center absolute top-0 left-0" style={{ transform: `translateX(${index * 100}%)` }} >
@@ -75,14 +75,14 @@ const Slider = ({ data }) => {
                             <img className="h-3.5 w-3.5" src={ArrowRight} alt='ArrowRight' />
                         </span>
                         <span className="z-10 rounded-full bg-violet flex items-center w-fit p-2 cursor-pointer" onClick={leftButton}>
-                            <img className="h-3.5 w-3.5" src={ArrowLeft} alt='ArrowLeft' />
+                            <ArrowLeft className="h-3.5 w-3.5" alt='ArrowLeft' />
                         </span>
                     </div>
 
                     <div className="flex dir-ltr items-center">
                         {
                             images.slice(slider.start, slider.end).map((slide, index) => (
-                                <div key={slide} className={`mx-2 ${active === slider.start + index ? 'bg-dark-gray shadow-[0px_4px_3px_rgba(27, 29, 33, 1)] p-1.5 rounded-lg' : ''}`}>
+                                <div key={slide} className={`mx-2 ${active === slider.start + index ? 'bg-gray/15 shadow-soft dark:bg-dark-gray shadow-[0px_4px_3px_rgba(27, 29, 33, 1)] p-1.5 rounded-lg' : ''}`}>
                                     <Image className="h-14 w-24 rounded-lg" alt={`slide ${index}`} src={baseUrl + slide} />
                                 </div>
                             ))

@@ -6,43 +6,53 @@
   font-family: iranSans;
   src: url("./assets/fonts/IRANSansWeb.woff2");
 }
+
 @font-face {
   font-family: Gilroy;
   src: url("./assets/fonts/Gilroy-ExtraBold.otf");
 }
+
 body {
   margin: 0;
   font-family: 'iranSans';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-.homeBg{
+
+.no-border-transition {
+  transition-property: color, background-color, text-decoration-color, fill, stroke !important;
+}
+
+.homeBg {
   background-image: url('./assets/background.jpg');
 }
-.dir-rtl{
+
+.dir-rtl {
   direction: rtl;
 }
-.dir-ltr{
+
+.dir-ltr {
   direction: ltr;
 }
+
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
 input:-webkit-autofill:active {
-  -webkit-box-shadow: 0 0 0 100px none inset; /* Background color */
-  -webkit-text-fill-color: white; /* Text color */
+  -webkit-box-shadow: 0 0 0 100px none inset;
+  /* Background color */
+  -webkit-text-fill-color: #6C5DD3;
+  -webkit-box-shadow: 0 0 0 30px #d2cbff54 inset !important;
+  /* Text color */
 }
 
-/* Optional: Remove the default yellow background in Chrome */
-input:-webkit-autofill {
-  transition: background-color 5000s ease-in-out 0s;
-}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
 
-.scrollbar-none{
+.scrollbar-none {
   scrollbar-width: none
 }
 
@@ -51,14 +61,14 @@ code {
 .progress-bar::-webkit-slider-runnable-track {
   width: 100%;
   height: 0px;
-  background: none; 
+  background: none;
   border-radius: 4px;
 }
 
 .progress-bar::-moz-range-track {
   width: 100%;
   height: 0px;
-  background: none; 
+  background: none;
   border-radius: 4px;
 }
 
@@ -71,7 +81,7 @@ code {
   height: 15px;
   background-image: none;
   z-index: 50;
-  
+
   background-size: contain;
   background-repeat: no-repeat;
   cursor: pointer;
@@ -85,14 +95,14 @@ code {
   height: 15px;
   background-image: none;
   z-index: 50;
-  
+
   background-size: contain;
   background-repeat: no-repeat;
   cursor: pointer;
 }
 
 
-/* loading Animation */ 
+/* loading Animation */
 
 .loader {
   color: rgb(124, 124, 124);
@@ -113,16 +123,15 @@ code {
   overflow: hidden;
   position: relative;
 }
+
 .words::after {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    var(--bg-color) 10%,
-    transparent 30%,
-    transparent 70%,
-    var(--bg-color) 90%
-  );
+  background: linear-gradient(var(--bg-color) 10%,
+      transparent 30%,
+      transparent 70%,
+      var(--bg-color) 90%);
   z-index: 20;
 }
 
@@ -133,6 +142,10 @@ code {
   color: #956afa;
   animation: spin_4991 4s infinite;
 }
+
+/* .darkAnimation {
+  transition: ease-in-out all 700ms;
+} */
 
 @keyframes spin_4991 {
   10% {

@@ -18,13 +18,14 @@
   .bars {
     width: 100%;
     height: 3px; /* Adjusted from 4px to 3px for proportionality */
-    background-color: rgb(253, 255, 243);
+    background-color: #242731 ;
     border-radius: 3px; /* Adjusted from 5px to 3px for proportionality */
     transition-duration: 0.3s;
   }
   /* #checkbox:checked + .toggle .bars {
     margin-left: 13px;
   } */
+   
   #checkbox:checked + .toggle{
     gap: 6px;
   }

@@ -7,11 +7,11 @@ const Trailer = ({ data }) => {
     const baseUrl = axios.defaults.baseURL
 
     return (
-        <div className='bg-dark-gray bg-opacity-100 z-50 mx-3 min-w-72 w-full last:ml-0 first:mr-0  rounded-3xl text-white'>
+        <div className='bg-white dark:bg-dark-gray shadow-soft bg-opacity-100 z-50 mx-3 min-w-72 w-full last:ml-0 first:mr-0  rounded-3xl  text-slate-700 dark:text-white'>
             <div className='h-40 relative'>
-                <span className='absolute top-4 right-4 bg-[#1B1D21] bg-opacity-70 py-0.5 px-2.5 rounded-md'>08:56</span>
+                <span className='absolute top-4 right-4  bg-white dark:bg-[#1B1D21] bg-opacity-70 pt-0.5 px-2 text-[10px] z-40 rounded-md'>08:56</span>
                 <Image className='h-full w-full object-cover rounded-t-3xl' alt="trailer-image" src={baseUrl + data.image} />
-                <div className='relative dir-ltr bg-[#1B1D21] h-1 min-w-full'>
+                <div className='relative dir-ltr bg-white dark:bg-[#1B1D21] h-1 min-w-full'>
                     <span className='absolute bg-orange h-1 z-20' style={{ width: '50%' }}></span>
                 </div>
             </div>

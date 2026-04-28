@@ -5,7 +5,7 @@ import Logo from '../../assets/Logo.svg'
 
 const Loading = () => {
     return (
-        <div className='flex justify-center items-center w-screen h-screen bg-dark-gray'>
+        <div className='flex justify-center items-center w-screen h-screen bg-white dark:bg-dark-gray'>
             <img className='animate-pulse h-12' src={Logo} />
             <div class="card">
                 <div class="loader">

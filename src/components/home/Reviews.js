@@ -13,7 +13,7 @@ const Reviews = ({ data, selectTrailer }) => {
                 }
             </div>
             <div className='w-full flex justify-center'>
-                <button className='bg-[#E4E4E41A] py-3 my-5 text-white text-base font-bold px-11 rounded-2xl'>
+                <button className='bg-[#e4e4e4] dark:bg-[#E4E4E41A] py-3 my-5 text-slate-700 dark:text-white text-base font-bold px-11 rounded-2xl'>
                     <Link to='#'>مشاهده همه</Link>
                 </button>
             </div>
