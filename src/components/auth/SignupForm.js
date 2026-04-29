@@ -8,7 +8,6 @@ import { customToast } from '../../utils/functions';
 import logo from '../../assets/Logo.svg'
 import SmileIcon from '../../assets/icons/SmileIcon';
 import LoadingButton from '../../modules/LoadingButton';
-import useDarkMode from '../../hooks/useDarkMode';
 import VisibleIcon from '../../assets/icons/VisibleIcon';
 
 const SignupForm = () => {
@@ -45,6 +44,8 @@ const SignupForm = () => {
         e.preventDefault()
         setLoading(true)
         const result = verifyData()
+        let userData = JSON.parse(JSON.stringify(data))
+        delete userData.repeatPassword
         if (result) {
             const signupResult = await signup(data)
             if (signupResult) {
@@ -90,7 +91,7 @@ const SignupForm = () => {
                 />
                 <div className='relative'>
                     <input
-                        type={visiblity.password ? "password" : "text"}
+                        type={!visiblity.password ? "password" : "text"}
                         name="password"
                         required
                         autoComplete='off'
@@ -105,7 +106,7 @@ const SignupForm = () => {
                 </div>
                 <div className='relative'>
                     <input
-                        type={visiblity.repeatPassword ? "password" : "text"}
+                        type={!visiblity.repeatPassword ? "password" : "text"}
                         name="repeatPassword"
                         required
                         autoComplete='off'
