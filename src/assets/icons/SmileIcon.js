@@ -12,7 +12,7 @@ const SmileIcon = () => {
             strokeWidth="2"
             strokeLinecap="round"
             strokeLinejoin="round"
-            className="text-white"
+            className="text-dark-gray dark:text-white"
         >
             <path d="M8 14s1.5 2 4 2 4-2 4-2" />
             <line x1="9" y1="8" x2="9.01" y2="10" />
