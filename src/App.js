@@ -5,7 +5,8 @@ import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import { SkeletonTheme } from "react-loading-skeleton";
 import 'react-loading-skeleton/dist/skeleton.css';
-import useDarkMode from "./hooks/useDarkMode"; // فرض می‌کنیم این hook وضعیت dark mode و localStorage را مدیریت می‌کند
+import useDarkMode from "./hooks/useDarkMode"; 
+import Index from "./pages/dashboard/Index";
 
 function App() {
     const [darkMode] = useDarkMode();
@@ -19,6 +20,7 @@ function App() {
                     <Route path="/" element={<Home />} />
                     <Route path="/login" element={<Login />} />
                     <Route path="/signup" element={<Signup />} />
+                    <Route path="/dashboard" element={<Index />} />
                 </Routes>
                 <ToastContainer />
             </SkeletonTheme >
