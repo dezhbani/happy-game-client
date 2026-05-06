@@ -15,7 +15,7 @@ const customToast = (type, message) => {
         draggable: true,
         progress: false,
         closeButton: false,
-        className: "darkAnimation font-iranSans dir-rtl shadow-[#F0F3F61A] shadow-md w-fit flex justify-center dark:bg-dark-gray text-dark-gray dark:text-white rounded-2xl text-sm md:text-base mt-5 px-3 py-0"
+        className: "darkAnimation font-iranSans dir-rtl shadow-[#F0F3F61A] shadow-md min-w-max w-fit min-h-max h-fit flex justify-center dark:bg-dark-gray text-dark-gray dark:text-white rounded-full text-sm md:text-base mt-5 px-5 py-3"
     }
     type ? toast[type](message, options) : toast(message, options)
 };
