@@ -85,9 +85,6 @@ const Home = () => {
                     <Trailers data={data.trailers} />
                 </div>
             </Background>
-            <div className="w-full mt-auto z-20">
-                <Footer />
-            </div>
         </>
     );
 };
