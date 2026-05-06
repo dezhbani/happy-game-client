@@ -9,7 +9,7 @@ const Login = () => {
     const { user } = useContext(ProfileContext)
     if (user) return <Navigate replace to="/" />
     return (
-        <Background>
+        <Background footer={false}>
             <Navbar logoVisiblity={false} />
             <LoginForm />
         </Background>
