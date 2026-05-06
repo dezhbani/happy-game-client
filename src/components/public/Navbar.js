@@ -64,10 +64,6 @@ const Navbar = ({ logoVisiblity = true }) => {
         const dark = toggleDarkMode()
     }
 
-    const handleExitAccount = () => {
-        localStorage.removeItem("currentUser")
-        refreshUserData()
-    }
     return (
         <>
             {
@@ -134,7 +130,7 @@ const Navbar = ({ logoVisiblity = true }) => {
             }
 
 
-            <nav className="max-w-screen-xl mb-10 justify-between flex dir-rtl w-full text-base">
+            <nav className="darkAnimation max-w-screen-xl bg-white/60 dark:bg-black/10 backdrop-blur-md z-40 p-4 rounded-full mb-10 justify-between flex sticky top-5 dir-rtl w-full text-base">
                 <Hamburger status={menu} className='lg:hidden' onChange={toggleMenu} />
                 <div className="flex items-center max-lg:justify-center">
                     <img alt='icon' className={`md:w-14 h-9 w-full lg:ml-5 ${!logoVisiblity && 'hidden'}`} src={Logo} />
@@ -159,22 +155,13 @@ const Navbar = ({ logoVisiblity = true }) => {
                                 <button className="px-6 sm:px-9 py-2 max-sm:text-sm rounded-lg w-max bg-violet text-white">ثبت نام</button>
                             </Link>
                             :
-                            <div onDoubleClick={handleExitAccount} className='darkAnimation relative flex h-9 w-9 flex-none items-center justify-center rounded-full bg-slate-700/15 shadow-soft dark:bg-white/10'>
-                                {/* {(
-                                    <div className={`${showTooltip ? 'opacity-100': 'opacity-0'} absolute z-20 left-full top-1 mx-2 mb-2 transition duration-200 transform translate-y-0`}>
-                                        <div className="flex bg-slate-800 w-max max-w-xs text-white rounded-lg p-2 items-center dir-rtl">
-                                            <WarningIcon />
-                                            <p className="text-xs mx-2 mb-1">دوبار کلیک کنید تا از اکانت خارج شوید!</p>
-                                        </div>
-                                    </div>
-                                )} */}
-
+                            <Link to="/dashboard" className='darkAnimation relative flex h-9 w-9 flex-none items-center justify-center rounded-full bg-slate-700/15 shadow-soft dark:bg-white/10'>
                                 <UserIcon
                                     className='darkAnimation stroke-slate-700 dark:stroke-white fill-none'
                                     onMouseEnter={() => setShowTooltip(true)}
                                     onMouseLeave={() => setShowTooltip(false)}
                                 />
-                            </div>
+                            </Link>
                     }
                 </div>
             </nav>
